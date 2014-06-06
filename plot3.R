@@ -32,7 +32,6 @@ closeAllConnections()
 # add a new column datetime with the combined Data and Time column
 dataf$datetime <- paste(dataf$Date, dataf$Time)
 dataf$datetime <- strptime(dataf$datetime, "%d/%m/%Y %H:%M:%S")
-dataf$datetime <- as.Date(dataf$datetime)
 
 # get and save aspects of the LOCALE for the R process for my case i am in
 # AUSTRIA and use the locale "German_Austria.1252", so the x axes labels are 
@@ -45,7 +44,7 @@ mylocation <- Sys.getlocale("LC_TIME")
 # now on it appears Thu/Fri/Sat
 Sys.setlocale("LC_TIME", "C")
 
-# Open PNG device; create 'plot1.png' in my working directory
+# Open PNG device; create 'plot3.png' in my working directory
 # uses cairographics' PNG backend which will never use a palette and normally
 # creates a larger 32-bit ARGB file - this may work better for specialist uses
 # with semi-transparent colours.

@@ -32,7 +32,6 @@ closeAllConnections()
 # add a new column datetime with the combined Data and Time column
 dataf$datetime <- paste(dataf$Date, dataf$Time)
 dataf$datetime <- strptime(dataf$datetime, "%d/%m/%Y %H:%M:%S")
-dataf$datetime <- as.Date(dataf$datetime)
 
 # get and save aspects of the LOCALE for the R process for my case i am in
 # AUSTRIA and use the locale "German_Austria.1252", so the x axes labels are 
@@ -45,7 +44,7 @@ mylocation <- Sys.getlocale("LC_TIME")
 # now on it appears Thu/Fri/Sat
 Sys.setlocale("LC_TIME", "C")
 
-# Open PNG device; create 'plot1.png' in my working directory
+# Open PNG device; create 'plot4.png' in my working directory
 # uses cairographics' PNG backend which will never use a palette and normally
 # creates a larger 32-bit ARGB file - this may work better for specialist uses
 # with semi-transparent colours.
@@ -53,13 +52,20 @@ png(file = file.png, width = 480, height = 480,  type = "cairo-png",
     bg = "transparent")
 
 # ready for PLOT 4
-par(mfrow = c(1,1))
+par(mfrow = c(2,2))
+# plot 1,1
+with(dataf, plot(datetime ,Global_active_power, xlab = "", ylab = "Global Active Power" , type="l"))
+# plot 1,2
+with(dataf, plot(datetime, Voltage, type = "l"))
+# plot 2,1
 with(dataf, plot(datetime, Sub_metering_1, xlab = "", ylab = "Energy sub metering", type = "n"))
 with(dataf, lines(datetime, Sub_metering_1))
 with(dataf, lines(datetime, Sub_metering_2, col = "red"))
 with(dataf, lines(datetime, Sub_metering_3, col = "blue"))
 legend("topright", legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), 
-       lty = c(1,1,1), col = c("black","red", "blue"))
+       lty = c(1,1,1), col = c("black","red", "blue"), bty = "n")
+# plot 2,2
+with(dataf, plot(datetime, Global_reactive_power, type = "l"))
 
 # Close the PNG file device and write file
 dev.off()

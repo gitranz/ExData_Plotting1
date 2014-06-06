@@ -32,7 +32,6 @@ closeAllConnections()
 # add a new column datetime with the combined Data and Time column
 dataf$datetime <- paste(dataf$Date, dataf$Time)
 dataf$datetime <- strptime(dataf$datetime, "%d/%m/%Y %H:%M:%S")
-dataf$datetime <- as.Date(dataf$datetime)
 
 # Open PNG device; create 'plot1.png' in my working directory
 # uses cairographics' PNG backend which will never use a palette and normally
