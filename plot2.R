@@ -1,8 +1,8 @@
-# R code file that constructs the PLOT 1 for the Projet 1. The Code File include
+# R code file that constructs the PLOT 2 for the Projet 1. The Code File include
 # the code for reading the data so that the plot can be fully reproduced. It 
 # also creates the PNG file.
 
-file.png = "plot1.png"
+file.png = "plot2.png"
 filename = "household_power_consumption.txt"
 
 # check if the data is in the current working directory. If not, download and unzip file.
@@ -52,10 +52,10 @@ Sys.setlocale("LC_TIME", "C")
 png(file = file.png, width = 480, height = 480,  type = "cairo-png", 
     bg = "transparent")
 
-# ready for PLOT 1
+# ready for PLOT 2
 par(mfrow = c(1,1))
-hist(dataf$Global_active_power,xlab = "Global Active Power (kilowatts)", 
-     col = "red", main = "Global Active Power")
+with(dataf, plot(datetime ,Global_active_power, xlab = "", 
+                 ylab = "Global Active Power (kilowatts)" ,type="l"))
 
 # Close the PNG file device and write file
 dev.off()
