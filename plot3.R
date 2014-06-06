@@ -2,6 +2,9 @@
 # the code for reading the data so that the plot can be fully reproduced. It 
 # also creates the PNG file.
 
+## ATTENTION: my png file uses transparent background as in the original github repository 
+## https://github.com/rdpeng/ExData_Plotting1/tree/master/figure
+
 file.png = "plot3.png"
 filename = "household_power_consumption.txt"
 
@@ -48,6 +51,10 @@ Sys.setlocale("LC_TIME", "C")
 # uses cairographics' PNG backend which will never use a palette and normally
 # creates a larger 32-bit ARGB file - this may work better for specialist uses
 # with semi-transparent colours.
+
+## ATTENTION: my png file uses transparent background as in the original github repository 
+## https://github.com/rdpeng/ExData_Plotting1/tree/master/figure
+
 png(file = file.png, width = 480, height = 480,  type = "cairo-png", 
     bg = "transparent")
 
