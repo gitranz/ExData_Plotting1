@@ -46,7 +46,7 @@ mylocation <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")              
 
 # Open PNG device; create 'plot1.png' in my working directory
-png(file = "plot1.png", width = 480, height = 480)
+png(file = "plot1.png", width = 480, height = 480,  type = "cairo-png")
 
 # ready for PLOT 1
 par(mfrow = c(1,1))
@@ -56,7 +56,6 @@ hist(dataf$Global_active_power,xlab = "Global Active Power (kilowatts)",
 # Close the PNG file device and write file
 dev.off()
 
-# switch back to the origianl LOCALE for date/time processing
+# switch back to the original LOCALE for date/time processing
 Sys.setlocale("LC_TIME", mylocation)
-
 
