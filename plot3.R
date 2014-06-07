@@ -2,9 +2,6 @@
 # the code for reading the data so that the plot can be fully reproduced. It 
 # also creates the PNG file.
 
-## ATTENTION: my png file uses transparent background as in the original github repository 
-## https://github.com/rdpeng/ExData_Plotting1/tree/master/figure
-
 file.png = "plot3.png"
 filename = "household_power_consumption.txt"
 
@@ -52,16 +49,11 @@ Sys.setlocale("LC_TIME", "C")
 # creates a larger 32-bit ARGB file - this may work better for specialist uses
 # with semi-transparent colours.
 
-## ATTENTION: my png file uses transparent background as in the original github repository 
-## https://github.com/rdpeng/ExData_Plotting1/tree/master/figure
-
-png(file = file.png, width = 480, height = 480,  type = "cairo-png", 
-    bg = "transparent")
+png(file = file.png, width = 480, height = 480,  type = "cairo-png")
 
 # ready for PLOT 3
 par(mfrow = c(1,1))
-with(dataf, plot(datetime, Sub_metering_1, xlab = "", ylab = "Energy sub metering", type = "n"))
-with(dataf, lines(datetime, Sub_metering_1))
+with(dataf, plot(datetime, Sub_metering_1, xlab = "", ylab = "Energy sub metering", type = "l"))
 with(dataf, lines(datetime, Sub_metering_2, col = "red"))
 with(dataf, lines(datetime, Sub_metering_3, col = "blue"))
 legend("topright", legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), 
